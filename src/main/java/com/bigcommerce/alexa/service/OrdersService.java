@@ -63,7 +63,7 @@ public class OrdersService {
 		System.out.println(String.format("=== Searching customer %s ===", customerName));
 		final Optional<Customer> oCustomer = customersClient.getCustomerByName(customerName);
 		if (oCustomer.isEmpty()) {
-			return String.format("Product with name %s could not be found", productName);
+			return String.format("Customer with name %s could not be found", customerName);
 		}
 
 		System.out.println(String.format("=== Searching customer address for %s ===", customerName));

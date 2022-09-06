@@ -3,6 +3,7 @@ package com.bigcommerce.alexa.rest;
 import com.bigcommerce.alexa.model.Customer;
 import com.bigcommerce.alexa.model.CustomerResponse;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
@@ -27,6 +28,9 @@ class CustomersClientImpl extends AbstractClient implements CustomersClient {
 				.map(c -> c.get(0));
 		}
 
+		if (customerResponse.getStatusCode()== HttpStatus.NOT_FOUND){
+			return Optional.empty();
+		}
 		throw new RuntimeException(
 			String.format("Unexpected status code %d", customerResponse.getStatusCode().value())
 		);
