@@ -9,12 +9,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-class OrdersControllerImpl extends AbstractController implements OrdersController {
+class OrdersClientImpl extends AbstractClient implements OrdersClient {
 
 	public List<Order> getOrders() {
 
 		final ResponseEntity<Order[]> orders = restTemplate.exchange(
-			getV2ApiUrl(OrdersController.PATH),
+			getV2ApiUrl(OrdersClient.PATH),
 			HttpMethod.GET,
 			getApiTokenHeader(),
 			Order[].class
@@ -35,7 +35,7 @@ class OrdersControllerImpl extends AbstractController implements OrdersControlle
 	public Optional<Order> postOrders(OrderRequest orderRequest) {
 
 		final ResponseEntity<Order> order = restTemplate.exchange(
-			getV2ApiUrl(OrdersController.PATH),
+			getV2ApiUrl(OrdersClient.PATH),
 			HttpMethod.POST,
 			getHttpEntityWithBody(orderRequest),
 			Order.class

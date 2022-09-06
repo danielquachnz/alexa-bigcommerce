@@ -22,14 +22,14 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class OrdersControllerImplTest {
+public class OrdersClientImplTest {
 	@Mock
 	private RestTemplate restTemplate;
 	@Mock
 	private BigCommerceConfig bigCommerceConfig;
 
 	@InjectMocks
-	private OrdersControllerImpl ordersController;
+	private OrdersClientImpl ordersClient;
 
 	@Mock
 	private ResponseEntity<Order[]> arrayResponse;
@@ -43,7 +43,7 @@ public class OrdersControllerImplTest {
 		// Given
 		when(bigCommerceConfig.getApiUrl()).thenReturn(URL);
 		when(restTemplate.exchange(
-			eq(URL.concat("/v2/").concat(OrdersController.PATH)),
+			eq(URL.concat("/v2/").concat(OrdersClient.PATH)),
 			eq(HttpMethod.GET),
 			any(HttpEntity.class),
 			eq(Order[].class))
@@ -52,7 +52,7 @@ public class OrdersControllerImplTest {
 		when(arrayResponse.getBody()).thenReturn(new Order[]{order});
 
 		// When
-		List<Order> result = ordersController.getOrders();
+		List<Order> result = ordersClient.getOrders();
 
 		// Then
 		assertThat(result).containsExactly(order);
@@ -64,7 +64,7 @@ public class OrdersControllerImplTest {
 		// Given
 		when(bigCommerceConfig.getApiUrl()).thenReturn(URL);
 		when(restTemplate.exchange(
-			eq(URL.concat("/v2/").concat(OrdersController.PATH)),
+			eq(URL.concat("/v2/").concat(OrdersClient.PATH)),
 			eq(HttpMethod.GET),
 			any(HttpEntity.class),
 			eq(Order[].class))
@@ -73,7 +73,7 @@ public class OrdersControllerImplTest {
 
 		// When
 		// Then
-		ordersController.getOrders();
+		ordersClient.getOrders();
 
 	}
 }

@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 
-abstract class AbstractController {
+abstract class AbstractClient {
 	private static final String API_KEY_HEADER = "X-Auth-Token";
 
 	@Inject

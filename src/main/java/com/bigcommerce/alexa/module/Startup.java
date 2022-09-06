@@ -1,6 +1,6 @@
 package com.bigcommerce.alexa.module;
 
-import com.bigcommerce.alexa.rest.ControllerModule;
+import com.bigcommerce.alexa.rest.ClientModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -20,7 +20,7 @@ public class Startup {
 		if (INJECTOR == null) {
 			INJECTOR = Guice.createInjector(
 				new AlexaModule(),
-				new ControllerModule()
+				new ClientModule()
 			);
 			INJECTOR.getInstance(Startup.class);
 		}

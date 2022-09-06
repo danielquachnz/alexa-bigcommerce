@@ -1,10 +1,10 @@
 package com.bigcommerce.alexa.service;
 
 import com.bigcommerce.alexa.model.*;
-import com.bigcommerce.alexa.rest.CatalogProductsController;
-import com.bigcommerce.alexa.rest.CustomersAddressesController;
-import com.bigcommerce.alexa.rest.CustomersController;
-import com.bigcommerce.alexa.rest.OrdersController;
+import com.bigcommerce.alexa.rest.CatalogProductsClient;
+import com.bigcommerce.alexa.rest.CustomersAddressesClient;
+import com.bigcommerce.alexa.rest.CustomersClient;
+import com.bigcommerce.alexa.rest.OrdersClient;
 import com.google.inject.Inject;
 
 import java.util.Collections;
@@ -14,19 +14,19 @@ import java.util.Optional;
 public class OrdersService {
 
 	@Inject
-	private OrdersController ordersController;
+	private OrdersClient ordersClient;
 	@Inject
-	private CatalogProductsController productsController;
+	private CatalogProductsClient productsClient;
 	@Inject
-	private CustomersController customersController;
+	private CustomersClient customersClient;
 	@Inject
-	private CustomersAddressesController customersAddressesController;
+	private CustomersAddressesClient customersAddressesClient;
 	@Inject
 	private CustomerAddressToBillingAddressRequestMapper addressMapper;
 
 	public String getOrderCountToday() {
 
-		final int total = ordersController.getOrders().size();
+		final int total = ordersClient.getOrders().size();
 
 		if (total == 3) {
 			return String.format("OH BABY A TRIPLE! %d orders have been placed", total);
@@ -39,7 +39,7 @@ public class OrdersService {
 
 	public String getOrderValueToday() {
 
-		final List<Order> orders = ordersController.getOrders();
+		final List<Order> orders = ordersClient.getOrders();
 		double total = orders.stream()
 			.map(Order::getTotalIncTax)
 			.map(Double::valueOf)
@@ -55,20 +55,20 @@ public class OrdersService {
 	public String placeOrder(String productName, String customerName) {
 
 		System.out.println(String.format("=== Searching product %s ===", productName));
-		final Optional<Product> oProduct = productsController.getProductByName(productName);
+		final Optional<Product> oProduct = productsClient.getProductByName(productName);
 		if (oProduct.isEmpty()) {
 			return String.format("Product with name %s could not be found", productName);
 		}
 
 		System.out.println(String.format("=== Searching customer %s ===", customerName));
-		final Optional<Customer> oCustomer = customersController.getCustomerByName(customerName);
+		final Optional<Customer> oCustomer = customersClient.getCustomerByName(customerName);
 		if (oCustomer.isEmpty()) {
 			return String.format("Product with name %s could not be found", productName);
 		}
 
 		System.out.println(String.format("=== Searching customer address for %s ===", customerName));
 		final int customerId = oCustomer.get().getId();
-		final Optional<CustomerAddress> oCustomerAddress = customersAddressesController.getCustomerAddressByCustomerId(
+		final Optional<CustomerAddress> oCustomerAddress = customersAddressesClient.getCustomerAddressByCustomerId(
 			oCustomer.get().getId()
 		);
 		if (oCustomerAddress.isEmpty()) {
@@ -94,7 +94,7 @@ public class OrdersService {
 			.billingAddress(billingAddressRequest)
 			.build();
 
-		final Optional<Order> oOrder = ordersController.postOrders(orderRequest);
+		final Optional<Order> oOrder = ordersClient.postOrders(orderRequest);
 		if (oOrder.isEmpty()) {
 			return "There was an issue placing the order";
 		}

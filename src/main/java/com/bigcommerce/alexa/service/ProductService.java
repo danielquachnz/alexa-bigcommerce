@@ -1,7 +1,7 @@
 package com.bigcommerce.alexa.service;
 
 import com.bigcommerce.alexa.model.Product;
-import com.bigcommerce.alexa.rest.CatalogProductsController;
+import com.bigcommerce.alexa.rest.CatalogProductsClient;
 import com.google.inject.Inject;
 
 import java.util.Optional;
@@ -9,10 +9,10 @@ import java.util.Optional;
 public class ProductService {
 
 	@Inject
-	private CatalogProductsController productsController;
+	private CatalogProductsClient productsClient;
 
 	public String getProductByName(String name) {
-		final Optional<Product> oProduct = productsController.getProductByName(name);
+		final Optional<Product> oProduct = productsClient.getProductByName(name);
 
 		if (oProduct.isEmpty()) {
 			return String.format("Product with name %s could not be found", name);

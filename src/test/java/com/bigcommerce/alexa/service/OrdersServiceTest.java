@@ -1,7 +1,7 @@
 package com.bigcommerce.alexa.service;
 
 import com.bigcommerce.alexa.model.Order;
-import com.bigcommerce.alexa.rest.OrdersController;
+import com.bigcommerce.alexa.rest.OrdersClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 public class OrdersServiceTest {
 
 	@Mock
-	private OrdersController ordersController;
+	private OrdersClient ordersClient;
 
 	@InjectMocks
 	private OrdersService ordersService;
@@ -27,7 +27,7 @@ public class OrdersServiceTest {
 	@Test
 	public void getOrderCountSingle() {
 		// Given
-		when(ordersController.getOrders())
+		when(ordersClient.getOrders())
 			.thenReturn(Collections.singletonList(mock(Order.class)));
 
 		// When
@@ -40,7 +40,7 @@ public class OrdersServiceTest {
 	@Test
 	public void getOrderCountMultiple() {
 		// Given
-		when(ordersController.getOrders())
+		when(ordersClient.getOrders())
 			.thenReturn(Arrays.asList(mock(Order.class), mock(Order.class)));
 
 		// When
@@ -58,7 +58,7 @@ public class OrdersServiceTest {
 		when(order1.getTotalIncTax()).thenReturn("11.11");
 		final Order order2 = mock(Order.class);
 		when(order2.getTotalIncTax()).thenReturn("22.22");
-		when(ordersController.getOrders())
+		when(ordersClient.getOrders())
 			.thenReturn(Arrays.asList(order1, order2));
 
 		// When

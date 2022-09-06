@@ -6,7 +6,7 @@ import com.bigcommerce.alexa.model.OrderRequest;
 import java.util.List;
 import java.util.Optional;
 
-public interface OrdersController {
+public interface OrdersClient {
 
 	String PATH = "orders";
 	List<Order> getOrders();

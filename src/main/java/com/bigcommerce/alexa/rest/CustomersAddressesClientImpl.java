@@ -1,21 +1,19 @@
 package com.bigcommerce.alexa.rest;
 
-import com.bigcommerce.alexa.model.Customer;
 import com.bigcommerce.alexa.model.CustomerAddress;
 import com.bigcommerce.alexa.model.CustomerAddressResponse;
-import com.bigcommerce.alexa.model.CustomerResponse;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
 
-class CustomersAddressesControllerImpl extends AbstractController implements CustomersAddressesController {
+class CustomersAddressesClientImpl extends AbstractClient implements CustomersAddressesClient {
 
 	@Override
 	public Optional<CustomerAddress> getCustomerAddressByCustomerId(int customerId) {
 		final String url = String.format(
 			"%s%s%d",
-			getV3ApiUrl(CustomersAddressesController.PATH),
+			getV3ApiUrl(CustomersAddressesClient.PATH),
 			"?customer_id:in=",
 			customerId
 		);

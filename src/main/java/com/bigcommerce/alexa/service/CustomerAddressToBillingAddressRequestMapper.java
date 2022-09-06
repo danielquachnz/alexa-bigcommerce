@@ -1,14 +1,6 @@
 package com.bigcommerce.alexa.service;
 
 import com.bigcommerce.alexa.model.*;
-import com.bigcommerce.alexa.rest.CatalogProductsController;
-import com.bigcommerce.alexa.rest.CustomersAddressesController;
-import com.bigcommerce.alexa.rest.CustomersController;
-import com.bigcommerce.alexa.rest.OrdersController;
-import com.google.inject.Inject;
-
-import java.util.List;
-import java.util.Optional;
 
 public class CustomerAddressToBillingAddressRequestMapper {
 

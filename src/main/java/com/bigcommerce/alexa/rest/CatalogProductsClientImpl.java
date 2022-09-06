@@ -8,12 +8,12 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Optional;
 
-class CatalogProductsControllerImpl extends AbstractController implements CatalogProductsController {
+class CatalogProductsClientImpl extends AbstractClient implements CatalogProductsClient {
 
 	@Override
 	public Optional<Product> getProductByName(String name) {
 
-		final String url = getV3ApiUrl(CatalogProductsController.PATH).concat("?name:like=".concat(name));
+		final String url = getV3ApiUrl(CatalogProductsClient.PATH).concat("?name:like=".concat(name));
 		final ResponseEntity<ProductResponse> productResponse = restTemplate.exchange(
 			url,
 			HttpMethod.GET,

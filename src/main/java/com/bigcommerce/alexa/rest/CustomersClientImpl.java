@@ -2,21 +2,17 @@ package com.bigcommerce.alexa.rest;
 
 import com.bigcommerce.alexa.model.Customer;
 import com.bigcommerce.alexa.model.CustomerResponse;
-import com.bigcommerce.alexa.model.Order;
-import org.joda.time.DateTime;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
-class CustomersControllerImpl extends AbstractController implements CustomersController {
+class CustomersClientImpl extends AbstractClient implements CustomersClient {
 
 	@Override
 	public Optional<Customer> getCustomerByName(String name) {
 
-		final String url = getV3ApiUrl(CustomersController.PATH)
+		final String url = getV3ApiUrl(CustomersClient.PATH)
 			.concat("?name:like=".concat(name));
 		final ResponseEntity<CustomerResponse> customerResponse = restTemplate.exchange(
 			url,
