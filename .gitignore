@@ -1,0 +1,11 @@
+.idea
+.gradle
+/build/
+**/.idea
+**/build
+**/out
+**/*.iml
+**/*.ipr
+**/*.iws
+**/logs/*.log
+alexa-bigcommerce/src/main/resources/config/application.yml
