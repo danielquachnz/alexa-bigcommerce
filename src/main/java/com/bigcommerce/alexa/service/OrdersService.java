@@ -65,7 +65,7 @@ public class OrdersService {
 			oCustomer.get().getId()
 		);
 		if (oCustomerAddress.isEmpty()) {
-			return String.format("Customer address could not be found");
+			return String.format("Customer address could not be found for %s", customerName);
 		}
 
 		final BillingAddressRequest billingAddressRequest = addressMapper.mapToBillingAddressRequest(
