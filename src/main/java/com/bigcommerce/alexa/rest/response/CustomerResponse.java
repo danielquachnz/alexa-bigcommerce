@@ -1,15 +1,14 @@
-package com.bigcommerce.alexa.model;
+package com.bigcommerce.alexa.rest.response;
 
+import com.bigcommerce.alexa.model.Customer;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 @JsonFormat(with = JsonFormat.Feature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
 @Data
-@Builder
-public class OrderProductRequest {
-	@JsonProperty("product_id")
-	private Integer productId;
-	private Integer quantity;
+public class CustomerResponse {
+	private List<Customer> data;
 }

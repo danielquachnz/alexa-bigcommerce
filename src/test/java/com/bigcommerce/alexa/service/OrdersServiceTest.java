@@ -5,6 +5,8 @@ import com.bigcommerce.alexa.rest.CatalogProductsClient;
 import com.bigcommerce.alexa.rest.CustomersAddressesClient;
 import com.bigcommerce.alexa.rest.CustomersClient;
 import com.bigcommerce.alexa.rest.OrdersClient;
+import com.bigcommerce.alexa.rest.request.BillingAddressRequest;
+import com.bigcommerce.alexa.rest.request.OrderRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

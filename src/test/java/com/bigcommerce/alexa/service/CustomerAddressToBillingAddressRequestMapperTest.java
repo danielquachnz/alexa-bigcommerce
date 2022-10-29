@@ -1,6 +1,6 @@
 package com.bigcommerce.alexa.service;
 
-import com.bigcommerce.alexa.model.BillingAddressRequest;
+import com.bigcommerce.alexa.rest.request.BillingAddressRequest;
 import com.bigcommerce.alexa.model.CustomerAddress;
 import org.junit.Test;
 import org.junit.runner.RunWith;

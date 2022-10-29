@@ -1,7 +1,7 @@
 package com.bigcommerce.alexa.rest;
 
 import com.bigcommerce.alexa.model.CustomerAddress;
-import com.bigcommerce.alexa.model.CustomerAddressResponse;
+import com.bigcommerce.alexa.rest.request.CustomerAddressResponse;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 

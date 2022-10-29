@@ -2,9 +2,9 @@ package com.bigcommerce.alexa.rest;
 
 
 import com.bigcommerce.alexa.config.BigCommerceConfig;
-import com.bigcommerce.alexa.model.BillingAddressRequest;
+import com.bigcommerce.alexa.rest.request.BillingAddressRequest;
 import com.bigcommerce.alexa.model.Order;
-import com.bigcommerce.alexa.model.OrderRequest;
+import com.bigcommerce.alexa.rest.request.OrderRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;

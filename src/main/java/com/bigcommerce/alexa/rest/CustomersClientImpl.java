@@ -1,7 +1,7 @@
 package com.bigcommerce.alexa.rest;
 
 import com.bigcommerce.alexa.model.Customer;
-import com.bigcommerce.alexa.model.CustomerResponse;
+import com.bigcommerce.alexa.rest.response.CustomerResponse;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

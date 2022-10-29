@@ -1,6 +1,7 @@
 package com.bigcommerce.alexa.service;
 
 import com.bigcommerce.alexa.model.*;
+import com.bigcommerce.alexa.rest.request.BillingAddressRequest;
 
 public class CustomerAddressToBillingAddressRequestMapper {
 

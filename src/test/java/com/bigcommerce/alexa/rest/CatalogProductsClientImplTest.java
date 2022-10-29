@@ -3,6 +3,7 @@ package com.bigcommerce.alexa.rest;
 
 import com.bigcommerce.alexa.config.BigCommerceConfig;
 import com.bigcommerce.alexa.model.*;
+import com.bigcommerce.alexa.rest.response.ProductResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

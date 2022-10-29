@@ -5,10 +5,12 @@ import com.bigcommerce.alexa.rest.CatalogProductsClient;
 import com.bigcommerce.alexa.rest.CustomersAddressesClient;
 import com.bigcommerce.alexa.rest.CustomersClient;
 import com.bigcommerce.alexa.rest.OrdersClient;
+import com.bigcommerce.alexa.rest.request.BillingAddressRequest;
+import com.bigcommerce.alexa.rest.request.OrderProductRequest;
+import com.bigcommerce.alexa.rest.request.OrderRequest;
 import com.google.inject.Inject;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 public class OrdersService {
