@@ -58,13 +58,12 @@ public class OrdersServiceTest {
 		when(order1.getTotalIncTax()).thenReturn("11.11");
 		final Order order2 = mock(Order.class);
 		when(order2.getTotalIncTax()).thenReturn("22.22");
-		when(ordersClient.getOrders())
-			.thenReturn(Arrays.asList(order1, order2));
+		when(ordersClient.getOrders()).thenReturn(Arrays.asList(order1, order2));
 
 		// When
 		final String message = ordersService.getOrderValueToday();
 
 		// Then
-		assertThat(message).isEqualTo("33.33 dollars of orders has been placed");
+		assertThat(message).isEqualTo("33.33 dollars of orders have been placed");
 	}
 }

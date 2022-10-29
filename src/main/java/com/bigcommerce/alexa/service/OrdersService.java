@@ -28,10 +28,6 @@ public class OrdersService {
 
 		final int total = ordersClient.getOrders().size();
 
-		if (total == 3) {
-			return String.format("OH BABY A TRIPLE! %d orders have been placed", total);
-		}
-
 		return total == 1
 			? String.format("%d order has been placed", total)
 			: String.format("%d orders have been placed", total);
@@ -39,8 +35,8 @@ public class OrdersService {
 
 	public String getOrderValueToday() {
 
-		final List<Order> orders = ordersClient.getOrders();
-		double total = orders.stream()
+		final double total = ordersClient.getOrders()
+			.stream()
 			.map(Order::getTotalIncTax)
 			.map(Double::valueOf)
 			.reduce(0.0, Double::sum);
@@ -54,19 +50,16 @@ public class OrdersService {
 
 	public String placeOrder(String productName, String customerName) {
 
-		System.out.println(String.format("=== Searching product %s ===", productName));
 		final Optional<Product> oProduct = productsClient.getProductByName(productName);
 		if (oProduct.isEmpty()) {
 			return String.format("Product with name %s could not be found", productName);
 		}
 
-		System.out.println(String.format("=== Searching customer %s ===", customerName));
 		final Optional<Customer> oCustomer = customersClient.getCustomerByName(customerName);
 		if (oCustomer.isEmpty()) {
 			return String.format("Customer with name %s could not be found", customerName);
 		}
 
-		System.out.println(String.format("=== Searching customer address for %s ===", customerName));
 		final int customerId = oCustomer.get().getId();
 		final Optional<CustomerAddress> oCustomerAddress = customersAddressesClient.getCustomerAddressByCustomerId(
 			oCustomer.get().getId()
@@ -75,7 +68,6 @@ public class OrdersService {
 			return String.format("Customer address could not be found");
 		}
 
-		System.out.println(String.format("=== Creating billing address for %s ===", customerName));
 		final BillingAddressRequest billingAddressRequest = addressMapper.mapToBillingAddressRequest(
 			oCustomerAddress.get(),
 			oCustomer.get().getEmail()

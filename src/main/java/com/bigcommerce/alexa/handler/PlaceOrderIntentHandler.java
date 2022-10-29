@@ -22,18 +22,12 @@ class PlaceOrderIntentHandler extends AbstractRequestHandler {
 
 	@Override
 	String getText(Map<String, Slot> slotsMap) {
-		System.out.println(String.format(
-			"=== product and customer ===", slotsMap.get("productAndCustomer").getValue()
-		));
 		final String[] params = slotsMap.get("productAndCustomer").getValue().split(" for ");
 		if (params.length != 2) {
 			throw new RuntimeException("Require both a product and a customer");
 		}
 		final String productName = params[0];
 		final String customerName = params[1];
-		System.out.println(String.format(
-			"Placing order for %s for customer %s", productName, customerName
-		));
 		return ordersService.placeOrder(productName, customerName);
 	}
 }

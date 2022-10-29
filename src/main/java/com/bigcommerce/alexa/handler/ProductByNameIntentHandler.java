@@ -23,7 +23,6 @@ class ProductByNameIntentHandler extends AbstractRequestHandler {
 	@Override
 	String getText(Map<String, Slot> slotsMap) {
 		final String productName = slotsMap.get("productName").getValue();
-		System.out.println(String.format("Product name is %s", productName));
 		return productService.getProductByName(productName);
 	}
 }

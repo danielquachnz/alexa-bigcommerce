@@ -35,8 +35,6 @@ abstract class AbstractClient {
 		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 		try {
 			final String jsonRequest = objectMapper.writeValueAsString(requestBody);
-			System.out.println("=== request ===");
-			System.out.println(jsonRequest);
 			return new HttpEntity<>(jsonRequest, headers);
 		} catch (JsonProcessingException e) {
 			throw new RuntimeException("Could not parse JSON request", e);
